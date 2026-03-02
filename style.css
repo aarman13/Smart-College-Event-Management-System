@@ -503,3 +503,38 @@ hr.border-secondary {
 .breadcrumb-item + .breadcrumb-item::before {
     color: white;
 }
+/*for dasboard*/
+:root {
+    --primary-green: #4f6d52; /* Your Project Green */
+}
+
+#sidebar-wrapper {
+    min-width: 250px;
+    height: 100vh;
+}
+
+.list-group-item.active {
+    background-color: var(--primary-green) !important;
+    border-color: var(--primary-green) !important;
+}
+
+.btn-signup {
+    background-color: var(--primary-green) !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* DIY Image Zoom Fix */
+.card-img-top {
+    height: 200px;
+    object-fit: contain !important; /* Ensures DIY is fully visible */
+    background-color: #f1f1f1;
+}
+
+.stat-card {
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}

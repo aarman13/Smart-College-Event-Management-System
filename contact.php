@@ -1,3 +1,25 @@
+<?php
+include 'db.php'; // Using your existing database connection
+
+$status_message = "";
+
+if (isset($_POST['send_message'])) {
+    // Sanitize inputs to prevent SQL injection
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $subject = mysqli_real_escape_string($conn, $_POST['subject']);
+    $message = mysqli_real_escape_string($conn, $_POST['message']);
+
+    $query = "INSERT INTO contact_messages (name, email, subject, message) 
+              VALUES ('$name', '$email', '$subject', '$message')";
+
+    if (mysqli_query($conn, $query)) {
+        $status_message = "<div class='alert alert-success'>Message sent successfully!</div>";
+    } else {
+        $status_message = "<div class='alert alert-danger'>Error: " . mysqli_error($conn) . "</div>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +34,10 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html"><i class="fas fa-graduation-cap"></i> College Events </a>
+            <a class="navbar-brand fw-bold" href="index.php"><i class="fas fa-graduation-cap"></i> College Events </a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     
                 </ul>
             </div>
@@ -61,29 +83,27 @@
 
             <div class="col-lg-7">
                 <div class="card border-0 shadow-sm p-4 rounded-4">
-                    <form id="contactForm">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label small fw-bold">Full Name</label>
-                                <input type="text" class="form-control bg-light border-0" placeholder="John Doe" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label small fw-bold">Email Address</label>
-                                <input type="email" class="form-control bg-light border-0" placeholder="john@example.com" required>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label small fw-bold">Subject</label>
-                                <input type="text" class="form-control bg-light border-0" placeholder="Event Inquiry" required>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label small fw-bold">Message</label>
-                                <textarea class="form-control bg-light border-0" rows="5" placeholder="How can we help you?" required></textarea>
-                            </div>
-                            <div class="col-12 mt-4">
-                                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
+                    <?php echo $status_message; ?>
+
+<form action="contact.php" method="POST">
+    <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" name="name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email Address</label>
+        <input type="email" name="email" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Subject</label>
+        <input type="text" name="subject" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Message</label>
+        <textarea name="message" class="form-control" rows="4" required></textarea>
+    </div>
+    <button type="submit" name="send_message" class="btn btn-success">Send Message</button>
+</form>
                     <div id="formSuccess" class="alert alert-success mt-3 d-none">
                         Message sent successfully! We'll get back to you soon.
                     </div>

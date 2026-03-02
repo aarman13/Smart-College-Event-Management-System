@@ -41,10 +41,10 @@
                     <a class="nav-link" href="about.html">About</a>
                 </li>
                 <li class="nav-item ms-lg-3">
-                    <a href="login.html" class="btn btn-outline-primary me-2">Login</a>
+                    <a href="/fyp/login.php" class="btn btn-outline-primary me-2">Login</a>
                 </li>
                 <li class="nav-item">
-    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+    <a href="/fyp/signup.php" class="btn btn-primary">Sign Up</a>
                </li>
             </ul>
         </div>
@@ -273,9 +273,9 @@
             <div class="col-md-4 px-md-5">
                 <h6 class="fw-bold mb-3">Quick Links</h6>
                 <ul class="list-unstyled small">
-                    <li class="mb-2"><a href="index.html" class="text-secondary text-decoration-none footer-link">Home</a></li>
+                    <li class="mb-2"><a href="index.php" class="text-secondary text-decoration-none footer-link">Home</a></li>
                     <li class="mb-2"><a href="#" class="text-secondary text-decoration-none footer-link">Events</a></li>
-                    <li class="mb-2"><a href="contact.html" class="text-secondary text-decoration-none footer-link">Contact Us</a></li>
+                    <li class="mb-2"><a href="contact.php" class="text-secondary text-decoration-none footer-link">Contact Us</a></li>
                 </ul>
             </div>
 
