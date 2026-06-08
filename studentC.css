@@ -1,0 +1,450 @@
+/* ==========================================================================
+   STUDENT COUNCIL BRAND CONFIGURATIONS & COMPONENT VARIABLES
+   ========================================================================== */
+:root {
+    --primary-green: #6c8672;      /* Matches your system button assets colors */
+    --accent-maroon: #800000;      /* Core branding maroon accent color */
+    --surface-white: #ffffff;
+    --border-clean: #e2e8f0;       /* Muted gray border accentuation */
+    --bg-light-surface: #f8f9fa;
+    --text-slate: #2d3748;
+    --text-body-muted: #4a5568;
+}
+
+body {
+    background-color: var(--bg-light-surface);
+    color: var(--text-slate);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   HERO HEAD DISPLAY COMPONENT INTERFACE
+   ========================================================================== */
+.council-hero {
+    position: relative;
+    width: 100%;
+    /* Dark contrast gradient filter ensures white typography meets AA standards */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)), 
+                      url('images/student council/SC (15).jpeg');
+    background-size: cover !important;
+    background-position: center 25% !important;
+    background-repeat: no-repeat;
+    padding: 85px 0;
+    text-align: center;
+    border-bottom: 4px solid var(--primary-green);
+}
+
+.council-hero h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--surface-white);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.85);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.council-hero p {
+    font-size: 1.15rem;
+    max-width: 780px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+    line-height: 1.5;
+}
+/* ==========================================================================
+   CUSTOM GREEN HEADLINES (Excluding Hero Section)
+   ========================================================================== */
+/* Targets the main section headers inside the overview panels */
+.overview-panel .section-header-title {
+    color: var(--primary-green) !important;
+}
+
+/* Targets the lower matrix grid headings */
+.activity-matrix-heading {
+    color: var(--primary-green) !important;
+    border-left: 4px solid var(--accent-maroon); /* Flips the accent mark to Maroon for contrast */
+}
+
+/* ==========================================================================
+   HERO BUTTON STYLE IN MARKED POSITION
+   ========================================================================== */
+.btn-council-home {
+    background-color: var(--primary-green) !important;
+    color: var(--surface-white) !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-council-home:hover {
+    background-color: transparent !important;
+    color: var(--surface-white) !important;
+    border-color: var(--surface-white) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+/* ==========================================================================
+   BREADCRUMB LINK STYLE (Matches About Us Template Exactly)
+   ========================================================================== */
+.council-breadcrumb {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+/* Style for the clickable link */
+.council-breadcrumb a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.council-breadcrumb a:hover {
+    color: var(--surface-white);
+    text-decoration: underline;
+}
+
+/* Style for the slash separator line mark */
+.council-breadcrumb .divider {
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 8px;
+}
+
+/* Style for the current page static text text */
+.council-breadcrumb .active-page {
+    color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   CONTENT PANEL MODULES
+   ========================================================================== */
+.overview-panel {
+    background: var(--surface-white);
+    border: 1px solid var(--border-clean);
+    border-radius: 6px;
+    padding: 32px;
+}
+
+.panel-maroon-accent {
+    border-top: 4px solid var(--accent-maroon) !important;
+}
+
+.section-header-title {
+    color: var(--accent-maroon);
+    font-weight: 700;
+    font-size: 1.5rem;
+    position: relative;
+    padding-bottom: 12px;
+    margin-bottom: 22px;
+}
+
+.section-header-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 55px;
+    height: 3px;
+    background-color: var(--primary-green);
+}
+
+.lead-text {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--primary-green);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.body-narrative {
+    font-size: 0.95rem;
+    color: var(--text-body-muted);
+    line-height: 1.7;
+    text-align: justify;
+    margin-bottom: 0;
+}
+
+/* Custom list items for responsibilities panel */
+.responsibility-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.responsibility-list li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 14px;
+    font-size: 1rem;
+    color: var(--text-slate);
+    border-bottom: 1px solid #f8f9fa;
+    padding-bottom: 8px;
+}
+
+.responsibility-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.responsibility-list li::before {
+    font-family: "Font Awesome 6 Free";
+    content: "\f058"; /* Premium circular check icon */
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--primary-green);
+    font-size: 1rem;
+}
+
+.badge-role {
+    font-size: 0.8rem;
+    background-color: #f1f5f9;
+    color: var(--text-body-muted);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+/* 1. Changes the "MEET OUR STUDENT COUNCIL OFFICE BEARERS" text color to Green */
+.gallery-row-main-heading {
+    color: var(--primary-green) !important;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-left: 4px solid var(--accent-maroon); /* Keeps the maroon side bar tag for nice contrast */
+    padding-left: 12px;
+}
+
+/* 2. Changes the top line decoration border on "The Responsibilities" card to Green */
+.panel-maroon-accent {
+    border-top: 4px solid var(--primary-green) !important; /* Changed from maroon to your primary green */
+}
+/* ==========================================================================
+   GRID CARDS ARCHITECTURE (Matches your exact gallery layout)
+   ========================================================================== */
+.activity-matrix-heading {
+    font-weight: 700;
+    color: var(--accent-maroon);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 1.1rem;
+    border-left: 4px solid var(--primary-green);
+    padding-left: 10px;
+    margin-top: 15px;
+}
+
+.council-gallery-card {
+    background: var(--surface-white);
+    border: 1px solid var(--border-clean);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+    height: 100%;
+}
+
+.council-gallery-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06) !important;
+    border-color: var(--primary-green);
+}
+
+.media-frame {
+    position: relative;
+    height: 210px;
+    overflow: hidden;
+    background-color: #f1f3f5;
+}
+
+.media-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.council-gallery-card:hover .media-frame img {
+    transform: scale(1.05);
+}
+
+.media-caption {
+    padding: 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-slate);
+    line-height: 1.45;
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    background: var(--surface-white);
+    border-top: 1px solid #f8f9fa;
+    text-align: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   PANORAMA BOTTOM ASSEMBLY SHOWCASE
+   ========================================================================== */
+.showcase-banner {
+    background: var(--surface-white);
+    border: 1px solid var(--border-clean);
+    border-radius: 6px;
+    padding: 16px;
+}
+
+.showcase-banner img {
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.banner-footer-context {
+    padding-top: 14px;
+    background: var(--surface-white);
+    color: var(--text-body-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+/* ==========================================================================
+   HORIZONTAL 3-COLUMN COLLAGE ROW STYLES
+   ========================================================================== */
+.gallery-row-main-heading {
+    color: var(--primary-green) !important;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    /* Changed this line from var(--accent-maroon) to your core theme green */
+    border-left: 4px solid var(--primary-green) !important; 
+    
+    padding-left: 12px;
+}
+.collage-display-card {
+    background: var(--surface-white);
+    border: 1px solid var(--border-clean);
+    border-radius: 6px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.collage-display-card:hover {
+    border-color: var(--primary-green);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.05) !important;
+}
+
+/* Changes the collage sub-headings inside the row cards to your theme Green */
+.collage-card-heading {
+    color: var(--primary-green) !important; /* Targets your exact sage green brand color */
+    font-weight: 700;
+    font-size: 1.15rem;
+    text-transform: capitalize;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.collage-media-frame {
+    width: 100%;
+    height: 320px; /* Fixed height for the column block wrappers to maintain layout parity */
+    overflow: hidden;
+    background-color: #ffffff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.collage-media-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crops uniformly into clean boxes, full view expands in Lightbox */
+    cursor: zoom-in;
+}
+/* ==========================================================================
+   MOCKUP MATCHING DIRECTORY ASSEMBLY GRID FIXES
+   ========================================================================== */
+.mockup-assembly-card {
+    background: var(--surface-white);
+    border: 1px solid var(--border-clean);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    transition: transform 0.2s ease;
+}
+
+.mockup-assembly-card:hover {
+    transform: translateY(-2px);
+}
+
+/* This is the magic snippet matching your target reference mockup frame exactly */
+.mockup-banner-frame {
+    width: 100%;
+    height: 160px; /* Forces a slim, wide landscape aspect ratio bar exactly like your template model */
+    overflow: hidden;
+    position: relative;
+    background-color: #000000;
+}
+
+.mockup-banner-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Centers and cleanly clips the wide crowd shot uniformly */
+    object-position: center 25%; /* Adjusts vertical positioning to keep the student group perfectly framed */
+    transition: opacity 0.3s ease;
+}
+
+.mockup-banner-frame:hover img {
+    cursor: zoom-in;
+    opacity: 0.9;
+}
+
+/* Subtle sleek zoom hint layout layer */
+.assembly-zoom-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(108, 134, 114, 0.9); /* Theme sage green */
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.mockup-banner-frame:hover .assembly-zoom-hint {
+    opacity: 1;
+}
+
+/* Metadata components text typography elements */
+.assembly-meta-caption {
+    background-color: #ffffff;
+}
+
+.caption-pill-badge {
+    color: var(--primary-green);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}

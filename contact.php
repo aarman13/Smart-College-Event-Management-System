@@ -34,7 +34,7 @@ if (isset($_POST['send_message'])) {
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.php"><i class="fas fa-graduation-cap"></i> College Events </a>
+            <a class="navbar-brand fw-bold" href="index.php"><i class="fas fa-graduation-cap"></i> College Event Management System </a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>

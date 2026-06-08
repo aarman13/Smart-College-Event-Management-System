@@ -1,0 +1,138 @@
+
+:root {
+    --navy-primary: #0A192F; 
+    --green-accent: #2E7D32; 
+    --text-white: #FFFFFF;
+    --text-navy: #0A192F;
+    --card-bg: #FFFFFF;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #444;
+}
+
+.navy-text { color: var(--text-navy); }
+.text-green { color: var(--green-accent); }
+
+.btn-navy {
+    background-color: var(--navy-primary);
+    border-color: var(--navy-primary);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-navy:hover {
+    background-color: #152a4f;
+    border-color: #152a4f;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.hero-hmv {
+    background: linear-gradient(rgba(10, 25, 47, 0.3), rgba(10, 25, 47, 0.3)), 
+                url('images/aboutimg_6.png');
+    
+    background-size: 100% 100%; 
+
+    background-position: center; 
+    
+    background-repeat: no-repeat;
+    height: 600px; 
+    position: relative;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5); 
+}
+.hero-content {
+    padding-top: 380px; 
+}   
+
+.gallery-item-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #ddd;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 2rem;
+    border: 2px dashed #999;
+}
+
+.search-bar-wrapper {
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.input-group-text, .form-control {
+    background-color: transparent !important;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: var(--navy-primary);
+}
+
+.stat-card {
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--green-accent);
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    color: var(--text-navy);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.vision-marquee-section {
+    background-color: #f9f9f9;
+}
+
+.marquee-container {
+    overflow: hidden; /* Hides content outside container */
+    white-space: nowrap; /* Prevents wrapping */
+    width: 100%;
+}
+
+.marquee-content {
+    display: inline-block;
+    padding-left: 100%; /* Start outside the view port */
+    animation: hmvMarquee 30s linear infinite; /* Adjust time for speed */
+}
+@keyframes hmvMarquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+.marquee-item {
+    display: inline-block;
+    width: 350px; /* Width of the card */
+    margin-right: 30px; /* Space between cards */
+    white-space: normal; /* Restore normal wrapping inside card */
+    vertical-align: top; /* Align top of cards */
+}
+
+.value-card {
+    border-top: 5px solid var(--green-accent);
+    min-height: 200px; 
+    transition: box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+    box-shadow: 0 15px 30px rgba(46, 125, 50, 0.2) !important;
+}
+
+.marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+}

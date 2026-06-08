@@ -1,3 +1,6 @@
+<?php
+include 'db.php'; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +10,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,7 +20,7 @@
 
         <!-- Logo -->
         <a class="navbar-brand fw-bold" href="#">
-            <i class="fas fa-graduation-cap"></i> College Events
+            <i class="fas fa-graduation-cap"></i> College Event Management System
         </a>
 
         <!-- Toggler Button (for mobile) -->
@@ -40,11 +45,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">About</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="studentcouncil.php">Student Council</a>
+                </li>
                 <li class="nav-item ms-lg-3">
                     <a href="/fyp/login.php" class="btn btn-outline-primary me-2">Login</a>
                 </li>
                 <li class="nav-item">
-    <a href="/fyp/signup.php" class="btn btn-primary">Sign Up</a>
+                    <a href="/fyp/signup.php" class="btn btn-primary">Sign Up</a>
                </li>
             </ul>
         </div>
@@ -53,46 +61,45 @@
 </nav>
 
 
-    <header id="home" class="hero d-flex align-items-center">
-        <div class="container text-center text-md-start">
-            <div class="row align-items-center">
-                <div class="col-md-6 text-white">
-                    <p class="text-uppercase fw-bold mb-1">Make your college life.</p>
-                    <h1 class="display-4 fw-bold">Welcome to College Event Management.</h1>
-                    <div class="bg-white p-2 rounded shadow-sm mt-4 d-flex">
-                        <input type="text" class="form-control border-0" placeholder="Search events...">
-                        <button class="btn btn-primary ms-2 px-4">Search</button>
-                    </div>
-                    <div class="mt-3">
-                        <a href="contact.html" class="btn btn-outline-light px-4 py-2">Contact Support</a>
-                        </div>
-                </div>
+   <header id="home" class="hero-slider-section position-relative overflow-hidden">
+    
+    <div id="heroCarousel" class="carousel slide carousel-fade position-absolute w-100 h-100" data-bs-ride="carousel">
+        <div class="carousel-inner h-100">
+            <div class="carousel-item active h-100">
+                <div class="hero-slide-overlay" style="background-image: url('images/hero_img1.png');"></div>
             </div>
-        </div>
-    </header>
-
-    <div class="container mt-n5">
-        <div class="row bg-dark text-white rounded p-4 text-center shadow">
-            <div class="col-md-4 border-end border-secondary">
-                <h3>80+</h3>
-                <p class="small mb-0 text-secondary">EVENTS HOSTED</p>
+            <div class="carousel-item h-100">
+                <div class="hero-slide-overlay" style="background-image: url('images/hero_img2.png');"></div>
             </div>
-            <div class="col-md-4 border-end border-secondary">
-                <h3>5000+</h3>
-                <p class="small mb-0 text-secondary">STUDENTS REGISTERED</p>
-            </div>
-            <div class="col-md-4">
-                <h3>120+</h3>
-                <p class="small mb-0 text-secondary">EVENT CATEGORIES</p>
-
+            <div class="carousel-item h-100">
+                <div class="hero-slide-overlay" style="background-image: url('images/hero_img3.png');"></div>
             </div>
         </div>
     </div>
 
-   <section id="events" class="container my-5">
+   <div class="container position-relative h-100 d-flex flex-column justify-content-between z-index-10 py-4 text-center">
+    
+    <div class="mt-2 invisible">
+        &nbsp;
+    </div>
+
+    <div class="mb-4">
+        <p class="lead text-white opacity-90 mb-4 mx-auto fw-bold" style="max-width: 700px; text-shadow: 2px 2px 10px rgba(0,0,0,1);">
+            Streaming College Traditions, from annual fashion shows to cultural milestones.
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="contact.php" class="btn btn-primary px-4 py-2 rounded-pill shadow">Contact Support</a>
+            <a href="#events" class="btn btn-outline-light px-4 py-2 rounded-pill">Browse Events</a>
+        </div>
+    </div>
+
+</div>
+</header>
+     
+   <section id="events" class="container my-5">  
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold">Event Categories</h2>
-        <a href="events.html" class="btn btn-link text-decoration-none fw-bold">
+        <a href="events.php" class="btn btn-link text-decoration-none fw-bold">
     View All <i class="fas fa-chevron-right small ms-1"></i>
 </a>
     </div>
@@ -135,131 +142,167 @@
     </div>
 </section>
         <section class="container my-5">
-        <div class="row g-4">
-            
-            <div class="col-lg-8">
-                <div class="card border-0 shadow-sm p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="fw-bold mb-0">Upcoming Events</h4>
-                        <div class="calendar-controls">
-                            <span class="me-3 fw-bold">March 2026</span>
-                            <button class="btn btn-sm btn-light" aria-label="Previous month">
-    <i class="fas fa-chevron-left"></i>
-</button>
-
-<button class="btn btn-sm btn-light" aria-label="Next month">
-    <i class="fas fa-chevron-right"></i>
-</button>
-                        </div>
-                    </div>
-                    
-                    <div class="table-responsive">
-                        <table class="table table-borderless text-center calendar-table">
-                            <thead>
-                                <tr class="text-muted small">
-                                    <th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th><th>SUN</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td><td>2</td><td class="calendar-event">3</td><td>4</td><td>5</td><td>6</td><td>7</td>
-                                </tr>
-                                <tr>
-                                    <td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
-                                </tr>
-                                <tr>
-                                    <td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td>
-                                </tr>
-                                <tr>
-                                    <td>22</td><td>23</td><td>24</td><td class="calendar-event">25</td><td>26</td><td>27</td><td class="calendar-event">28</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-header bg-navy text-white d-flex justify-content-between align-items-center p-3">
-                        <span class="fw-bold">Announcements</span>
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item p-3">
-                            <h6 class="fw-bold mb-1">Campus Festival a Great Success!</h6>
-                            <small class="text-muted">Mar 03, 2026</small>
-                        </li>
-                        <li class="list-group-item p-3">
-                            <h6 class="fw-bold mb-1">Farewell 2026</h6>
-                            <small class="text-muted">Mar 25, 2026</small>
-                        </li>
-                        <li class="list-group-item p-3">
-                            <h6 class="fw-bold mb-1">Nail/Resin art expo.</h6>
-                            <small class="text-muted">Mar 28, 2026</small>
-                        </li>
-                    </ul>
-                    <div class="card-footer bg-white border-0 text-center">
-    <button class="btn btn-link btn-sm text-decoration-none" data-bs-toggle="modal" data-bs-target="#announcementsModal">
-        View All Updates
-    </button>
-</div>
-                </div>
-            </div>
-
+    <div class="row g-4">
+        
+       <div class="col-lg-8">
+    <div class="card border-0 shadow-sm p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="fw-bold mb-0">Upcoming Events</h4>
+            <div id="calendar-header-info" class="fw-bold" style="color: #6c8672;"></div>
         </div>
-    </section>
-      <section class="container-fluid py-5 bg-navy text-white mt-5">
-    <div class="container">
-        <div class="row align-items-center g-4">
-            
-            <div class="col-lg-8">
-                <h5 class="fw-bold mb-4">Event Gallery</h5>
-                <div class="row g-2">
-                    <div class="col-3">
-                         <img src="images/AIexpo_img5.png" 
-                         class="img-fluid rounded-3 gallery-img" alt="AI Expo"
-                        style="cursor: pointer;"
-          onclick="openEventModal('AI Expo', 'images/AIexpo_img5.png', 'An exciting exhibition showcasing AI innovations.', 'March 20, 2026', 'Technical')">
-        <p class="small mt-2 mb-0 text-white">AI Expo</p>
-               </div>
-
-             <div class="col-3">
-    <img src="images/fest_img2.png" class="img-fluid rounded-3 gallery-img" alt="Concert"
-     style="cursor: pointer;"
-         onclick="openEventModal('Fiesta', 'images/fest_img2.png', 'A vibrant celebration filled with music, dance, performances, games, and live Concert.', 'March 05, 2026', 'Cultural')">
-    <p class="small mt-2 mb-0">Fiesta</p>
-</div>
-<div class="col-3">
-    <img src="images/sportsday_img3.png" class="img-fluid rounded-3 gallery-img" alt="Sports" style="cursor: pointer;"
-         onclick="openEventModal('Sports Day', 'images/sportsday_img3.png', 'An energetic showcase of athletic talent, teamwork, and competitive spirit.', 'April 10, 2026', 'Sports')">
-    <p class="small mt-2 mb-0">Sports Day</p>
-</div>
-                    <div class="col-3">
-    <img src="images/freshers2026_img4.png" 
-         class="img-fluid rounded-3 gallery-img" 
-         alt="Cultural" 
-         style="cursor: pointer;"
-         onclick="openEventModal('Freshers 2026', 'images/freshers2026_img4.png', 'The official welcome party for the new batch of 2026! A night of music, dance, and networking.', 'September 15, 2026', 'Cultural')">
-    <p class="small mt-2 mb-0">Freshers 2026</p>
-</div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="community-box p-4 rounded-4 border border-secondary text-center text-lg-start">
-                    <h5 class="fw-bold">Join Our Student Community!</h5>
-                    <p class="small text-secondary">Sign up to stay updated on all the latest events and news!</p>
-                    <div class="input-group mb-3 mt-3">
-                        <input type="email" class="form-control bg-light border-0" placeholder="Enter Your Email">
-                        <button class="btn btn-primary px-3" type="button">Subscribe</button>
-                    </div>
-                 <div class="social-icons pt-2">
-    <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-    <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-    <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-</div>
-        </div>
+        
+        <div id="calendar"></div>
     </div>
+</div>
+
+     <div class="col-lg-4">
+    <div class="card border-0 shadow-sm h-100">
+        <div class="card-header text-white d-flex justify-content-between align-items-center p-3" style="background-color: #6c8672;">
+            <span class="fw-bold">Announcements</span>
+            <i class="fas fa-bullhorn"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            <?php
+            $announce_query = "SELECT title, event_date FROM events ORDER BY created_at DESC LIMIT 3";
+            $announce_res = mysqli_query($conn, $announce_query);
+
+            if (mysqli_num_rows($announce_res) > 0) {
+                while($row = mysqli_fetch_assoc($announce_res)) { ?>
+                    <li class="list-group-item p-3">
+                        <h6 class="fw-bold mb-1"><?php echo $row['title']; ?></h6>
+                        <small class="text-muted"><?php echo date('M d, Y', strtotime($row['event_date'])); ?></small>
+                    </li>
+                <?php }
+            } else {
+                echo "<li class='list-group-item p-3'>No updates available.</li>";
+            } ?>
+        </ul>
+         <button class="btn btn-link btn-sm text-decoration-none" style="color:#6c8672;" data-bs-toggle="modal" data-bs-target="#announcementModal">
+                                     View All Updates
+         </button>
+    </div>
+</div>
+<div class="modal fade"
+id="announcementModal"
+tabindex="-1">
+
+<div class="modal-dialog modal-lg">
+
+<div class="modal-content border-0 shadow">
+
+<div class="modal-header text-white" style="background-color: #6c8672;">
+
+<h5 class="modal-title">
+All Announcements
+</h5>
+
+<button type="button"
+class="btn-close"
+data-bs-dismiss="modal">
+</button>
+
+</div>
+
+<div class="modal-body p-0">
+
+<?php
+
+$query="SELECT title,event_date
+FROM events
+ORDER BY created_at DESC";
+
+$result=mysqli_query($conn,$query);
+
+while($row=mysqli_fetch_assoc($result))
+{
+?>
+
+<div class="list-group-item p-3 border-bottom">
+
+<h6 class="fw-bold mb-1 text-dark">
+
+<?php echo $row['title']; ?>
+
+</h6>
+
+<small class="text-muted">
+
+<?php
+echo date(
+'M d, Y',
+strtotime(
+$row['event_date']
+));
+?>
+
+</small>
+
+</div>
+
+<?php } ?>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+    </div>
+</section>
+      <section class="container-fluid py-5 bg-navy text-white mt-5">
+<div class="container">
+<div class="row align-items-center g-4">
+<div class="col-md-8">
+<div class="gallery-header">
+        <h2 class="gallery-title">Event Gallery</h2>
+        <a href="gallery.php" class="gallery-btn">
+            View All Gallery <i class="fa fa-arrow-right"></i>
+        </a>
+    </div>
+
+<div class="row g-3 align-items-stretch">
+<div class="col-md-3 col-6">
+<img src="images/aiexpo_img5.png" class="img-fluid rounded shadow-sm gallery-img" style="cursor:pointer"
+onclick="openEventModal('AI Expo','images/aiexpo_img5.png','An exciting exhibition showcasing AI innovations.','March 11, 2026','Technical')">
+<p class="small mt-2 mb-0">AI Expo</p>
+</div>
+
+<div class="col-md-3 col-6">
+<img src="images/fest_img2.png" class="img-fluid rounded shadow-sm gallery-img" style="cursor:pointer"
+onclick="openEventModal('Fiesta','images/fest_img2.png','A vibrant celebration filled with music and dance.','Feburary 08, 2026','Cultural')">
+<p class="small mt-2 mb-0">Fiesta</p>
+</div>
+
+<div class="col-md-3 col-6">
+<img src="images/sportsday_img3.png" class="img-fluid rounded shadow-sm gallery-img" style="cursor:pointer"
+onclick="openEventModal('Sports Day','images/sportsday_img3.png','A day of athletic competition and teamwork.','April 10, 2025','Sports')">
+<p class="small mt-2 mb-0">Sports Day</p>
+</div>
+
+<div class="col-md-3 col-6">
+<img src="images/freshers_img4.png" class="img-fluid rounded shadow-sm gallery-img" style="cursor:pointer"
+onclick="openEventModal('Freshers 2025','images/freshers_img4.png','Welcome party for the new batch of 2025.','September 16, 2025','Cultural')">
+<p class="small mt-2 mb-0">Freshers 2025</p>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div style="background-color: rgba(255,255,255,0.1); padding:20px; border-radius:20px; border:1px solid rgba(255,255,255,0.2);">
+<h3 style="font-size:22px;">Become a Volunteer ⭐</h3>
+
+<p style="font-size:14px; opacity:0.8;">
+Join the <strong>Student Council</strong> team! Help us with Registrations,
+Technical Support, and Discipline.
+</p>
+
+<a href="volunteers.php" class="btn btn-primary">Apply Now</a>
+</div>
+</div>
+
+</div>
+</div>
 </section>
 <footer class="bg-dark text-white pt-5 pb-3">
     <div class="container">
@@ -267,7 +310,7 @@
             
             <div class="col-md-4">
                 <h5 class="fw-bold mb-3"><i class="fas fa-graduation-cap me-2"></i>Smart College Events</h5>
-                <p class="small text-secondary">Your gateway to amazing campus events and activities. Stay connected and never miss out on what's happening at your college.</p>
+                <p class="small text-secondary">Your gateway to amazing campus events and activities. Stay connected and never miss out on what's happening at our college.</p>
             </div>
 
             <div class="col-md-4 px-md-5">
@@ -305,9 +348,8 @@
         <div class="modal-content rounded-4">
             <div class="modal-header">
                 <h5 class="modal-title" id="eventTitle">Event Title</h5>
-                <button type="button" class="btn-close"
-        data-bs-dismiss="modal"
-        aria-label="Close">
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+aria-label="Close">
 </button>
             </div>
             <div class="modal-body text-center">
@@ -315,50 +357,40 @@
                 <p id="eventDescription"></p>
                 <p><strong>Date:</strong> <span id="eventDate"></span></p>
                 <p><strong>Category:</strong> <span id="eventCategory"></span></p>
-                <button class="btn btn-primary rounded-pill px-4 mt-3" onclick="alert('Registration Successful!')">Register Now</button>
             </div>
         </div>
     </div>
 </div>
 
-        </div>
-    </div>
-</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
-<div class="modal fade" id="announcementsModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content rounded-4 border-0 shadow">
-            <div class="modal-header bg-navy text-white">
-                <h5 class="modal-title fw-bold">All Campus Updates</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item p-3">
-                        <h6 class="fw-bold mb-1">Campus Festival a Great Success!</h6>
-                        <small class="text-muted">Mar 15, 2026</small>
-                    </li>
-                    <li class="list-group-item p-3">
-                        <h6 class="fw-bold mb-1">Farewell 2026</h6>
-                        <small class="text-muted">Mar 25, 2026</small>
-                    </li>
-                    <li class="list-group-item p-3">
-                        <h6 class="fw-bold mb-1">Nail/Resin art expo.</h6>
-                        <small class="text-muted">Mar 28, 2026</small>
-                    </li>
-                    <li class="list-group-item p-3 bg-light">
-                        <h6 class="fw-bold mb-1">Guest Lecture: The Future of AI</h6>
-                        <small class="text-muted">Apr 02, 2026</small>
-                    </li>
-                    <li class="list-group-item p-3 bg-light">
-                        <h6 class="fw-bold mb-1">Cultural fest</h6>
-                        <small class="text-muted">Apr 05, 2026</small>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    
+    // Check if the element exists in the console
+    if (!calendarEl) {
+        console.error("Error: Could not find the 'calendar' div!");
+        return;
+    }
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        height: 350,
+        contentHeight: 350,
+        headerToolbar: {
+            left: 'prev' ,
+            center: 'title',
+            right: 'next'
+        },
+        events: 'fetch_events.php',
+        eventDisplay: 'block' // This is the important step for centering highlights
+    });
+    
+    calendar.render();
+    console.log("Calendar should be rendered now.");
+});
+</script>
 </body>
 </html>

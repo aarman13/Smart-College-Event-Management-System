@@ -17,20 +17,86 @@ html {
     scroll-padding-top: 75px; 
 }
 
-/* 1. Hero & Header */
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                url('images/hero_img1.png'); 
-    background-size: cover;
-    background-position: center;
-    height: 600px;
+/* =========================================
+   FIXED HERO SECTION (60% Height & One-Line Title)
+   ========================================= */
+
+.hero-slider-section {
+    height: 60vh !important;
+    width: 100% !important;
+    overflow: hidden;
     position: relative;
-    color: white;
+    background-color: #000;
 }
+
+#heroCarousel {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1 !important;
+}
+
+.hero-slide-overlay {
+    height: 100% !important;
+    width: 100% !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+
+
+/* =========================================
+   THE "SANDWICH" LAYOUT (Top & Bottom Text)
+   ========================================= */
+
+.z-index-10 {
+    z-index: 10 !important;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes content to top and bottom */
+    height: 100%;
+    text-align: center; /* Centers the one-line title */
+    padding-top: 200px !important; /* Pushes the text down away from the top */
+    padding-bottom: 20px !important;
+}
+}
+
+/* Forces Title to One Line */
+.hero-slider-section h1 {
+    width: 100% !important;
+    max-width: 100% !important; /* Removed the 500px limit */
+    font-size: 2.8rem !important; 
+    white-space: nowrap; /* Prevents wrapping to next line */
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    margin: 0 !important;
+}
+
+/* Style the 'System' outline */
+.text-outline {
+    -webkit-text-stroke: 1.2px #6c8672 !important;
+    color: transparent !important;
+}
+
+/* Experience Campus Life (Green Text) */
+.tracking-widest {
+    color: #6c8672 !important; 
+    letter-spacing: 4px !important;
+    font-size: 0.9rem !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    margin-top: 5px;
+}
+
+/* Description & Buttons at the Bottom */
+.hero-slider-section p.lead {
+    margin-top: auto; /* Pushes this block to the bottom section */
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+}
+
 .navbar-brand, .nav-link {
     color: var(--primary-green) !important;
 }
@@ -99,7 +165,18 @@ html {
 .calendar-table td:hover {
     background-color: var(--soft-green);
 }
+.calendar-event {
+    background-color: #d1dbd2; /* Light Sage */
+    color: #405d4b; /* Dark Green */
+    border-radius: 50%;
+    font-weight: bold;
+}
 
+.calendar-table td {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
 /* This highlights today (automatic) */
 .today {
     background-color: var(--accent-green) !important;
@@ -168,7 +245,7 @@ html {
 }
 
 .gallery-img {
-    height: 100px;
+    height: 160px;
     width: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
@@ -186,9 +263,82 @@ html {
     transform: scale(1.05); /* Makes the image grow slightly when hovered */
     filter: brightness(90%);
 }
+/* Reduce the top padding of the whole green section */
+.gallery-section {
+    padding: 40px 5% 60px 5%; /* Changed top from 80px to 40px */
+    background-color: #334139; 
+}
+
+/* Tighten the header row */
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Reduced from 30px to 20px */
+    padding-bottom: 10px; /* Reduced from 15px to 10px */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure the title doesn't have extra default browser margins */
+.gallery-title {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0; 
+    line-height: 1; /* Keeps the text "box" tight to the letters */
+}
+
+.gallery-btn {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1); /* Ghost button style */
+    padding: 10px 25px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.gallery-btn:hover {
+    background-color: #ffffff;
+    color: #3d5645; /* Flips colors on hover */
+    transform: translateX(5px); /* Subtle slide effect */
+}
+
+.gallery-btn i {
+    font-size: 12px;
+}
+.gallery-row {
+    display: flex;
+    align-items: stretch;
+}
+
+.gallery-row > div {
+    display: flex;
+    flex-direction: column;
+}
+
 .community-box {
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.community-box {
+    background-color: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+
+    height: 100%;
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .community-box p {
@@ -235,9 +385,18 @@ hr.border-secondary {
     background-color: var(--primary-green) !important;
 }
 
+/* Ensure the modal background is solid white for better readability */
 .modal-content {
-    background-color: var(--background-mint);
+    background-color: #ffffff !important;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
+
+/* Ensure text inside modal is dark enough */
+.modal-body p, .modal-body span {
+    color: #333333;
+}
+
 /* Footer Link Hover Effect */
 .footer-link:hover {
     color: var(--accent-green) !important;
@@ -279,11 +438,13 @@ hr.border-secondary {
 /* Card Styling */
 .auth-card {
     background: white;
-    padding: 3rem;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+    border-top: 5px solid #6c8672;
     width: 100%;
-    max-width: 500px; /* Limits the width so it looks professional */
+    max-width: 420px; 
+    margin: auto;
 }
 
 /* Ensures labels don't get squished */
@@ -308,6 +469,7 @@ hr.border-secondary {
     width: 100%;
     max-width: 400px;
     text-align: center;
+    border-top: 5px solid #6c8672;
 }
 
 /* Graduation Icon Styling */
@@ -328,7 +490,7 @@ hr.border-secondary {
 .form-control {
     background-color: var(--background-mint);
     border: 1px solid var(--soft-green);
-    padding: 0.75rem;
+    padding: 0.6rem;
     border-radius: 8px;
 }
 
@@ -435,6 +597,41 @@ hr.border-secondary {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
 }
+.event-desc{
+line-height:1.4;
+min-height:45px;
+overflow:hidden;
+}
+.campus-title{
+    color: #4f6d52;
+}
+.event-ended-btn{
+    width:100%;
+    padding:12px;
+    background:#bdbdbd;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:not-allowed;
+    font-weight:600;
+}
+.register-btn{
+    display:block;
+    width:100%;
+    padding:12px;
+    background:#7c9473;
+    color:white;
+    text-align:center;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:600;
+    margin-top:10px;
+}
+
+.register-btn:hover{
+    background:#6c8672;
+    color:white;
+}
 
 /* Fix for the badges to use your project green */
 .text-success {
@@ -454,56 +651,7 @@ hr.border-secondary {
 #eventSearch {
     border-right: none;
 }
-/* About Page Specifics */
-
-.hero-small {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                url('images/Aboutus_img6.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 400px; /* Adjust height as needed */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-.text-primary {
-    color: var(--primary-green) !important;
-}
-.about-img {
-    height: 420px;         
-    width: 100%;            
-    object-fit: cover;      
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.about-img:hover {
-    transform: scale(1.03);  /* slight zoom */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-.bg-navy {
-    background-color: var(--primary-green) !important; 
-}
-.card.bg-transparent {
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-}
-
-.card.bg-transparent:hover {
-    transform: translateY(-10px);
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    border-color: white !important;
-}
-.rounded-4 {
-    border-radius: 1.5rem !important;
-}
-
-.breadcrumb-item + .breadcrumb-item::before {
-    color: white;
-}
-/*for dasboard*/
+/*for  admin dasboard*/
 :root {
     --primary-green: #4f6d52; /* Your Project Green */
 }
@@ -511,6 +659,33 @@ hr.border-secondary {
 #sidebar-wrapper {
     min-width: 250px;
     height: 100vh;
+}
+
+#sidebar-wrapper .list-group-item{
+    color:#4d6b53 !important;
+    font-weight:500;
+    border:none;
+    transition:all 0.3s ease;
+}
+
+#sidebar-wrapper .list-group-item i{
+    color:#4d6b53 !important;
+    margin-right:10px;
+}
+
+#sidebar-wrapper .list-group-item:hover{
+    background:#f1f5f2;
+    color:#4d6b53 !important;
+}
+
+#sidebar-wrapper .list-group-item.active{
+    background:#4d6b53 !important;
+    color:white !important;
+    border-radius:10px;
+}
+
+#sidebar-wrapper .list-group-item.active i{
+    color:white !important;
 }
 
 .list-group-item.active {
@@ -523,18 +698,395 @@ hr.border-secondary {
     color: white !important;
     border: none !important;
 }
-
-/* DIY Image Zoom Fix */
-.card-img-top {
-    height: 200px;
-    object-fit: contain !important; /* Ensures DIY is fully visible */
-    background-color: #f1f1f1;
+/* Styling for the new header labels */
+h2.fw-bold {
+    font-size: 2rem; /* Matches the large "Welcome back" text */
+    letter-spacing: -0.5px;
 }
 
+.text-muted.fw-semibold {
+    font-size: 0.95rem;
+    color: #888 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Ensure the background and shadow look clean */
+.bg-white.border-bottom {
+    background-color: #ffffff !important;
+    border-color: #f1f3f0 !important;
+}
+/* STUDENT DASHBOARD - PROFESSIONAL STYLES */
+:root {
+    --sidebar-bg: #ffffff;
+    --active-green: #4d6b53;
+    --bg-light: #f8fafc;
+    --accent-sage: #6b8e73;
+    --border-gray: #ececec;
+    --text-main: #334155;
+    --text-muted: #64748b;
+}
+
+body {
+    background-color: var(--bg-light);
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    color: var(--text-main);
+    margin: 0;
+}
+
+/* Sidebar - Exact Admin Match */
+.sidebar {
+    width: 280px; /* INCREASED from 260px for a 'bigger' feel */
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #ffffff;
+    border-right: 1px solid #eeeeee;
+    padding: 25px 0; /* More breathing room at the top */
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.sidebar-brand {
+    padding: 10px 30px 40px 30px; /* More space below the logo */
+    font-weight: 800; /* Extra bold */
+    font-size: 1.4rem; /* BIGGER Brand name */
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.brand-text{
+    color:#6c8672;
+    font-weight:700;
+    white-space:nowrap;
+}
+.sidebar-brand i{
+    color:#6c8672;
+}
+/* Nav Link - Making them 'Big' like your design */
+.nav-link {
+    padding: 16px 25px; /* INCREASED padding for a thicker button */
+    margin: 6px 20px; /* More space between buttons */
+    color: #6c757d;
+    font-size: 1.05rem; /* Slightly larger text */
+    font-weight: 600; /* Medium-Bold for readability */
+    display: flex;
+    align-items: center;
+    gap: 15px; /* More space between icon and text */
+    border-radius: 12px; /* Softer, more modern corners */
+    transition: all 0.3s ease;
+}
+
+/* Icons within the links */
+.nav-link i {
+    font-size: 1.2rem; /* Make icons stand out */
+}
+
+.nav-link.active {
+    background-color: #5b7c61 !important; /* A slightly richer Sage Green */
+    color: #ffffff !important;
+    box-shadow: 0 6px 15px rgba(91, 124, 97, 0.3); /* Stronger shadow for 'pop' */
+}
+
+.nav-link:hover:not(.active) {
+    background-color: #f1f3f1; /* Light sage tint on hover */
+    color: #5b7c61;
+    transform: translateX(5px); /* Subtle slide effect when hovering */
+}
+
+/* Main Content Area */
+.main-content {
+    margin-left: 260px;
+    padding: 40px;
+    background-color: #f8fafc;
+    min-height: 100vh;
+    width: calc(100% - 260px);
+}
+
+
+
+.profile-circle {
+    width: 60px;  /* Increased from 42px to make it 'Big' */
+    height: 60px; /* Increased from 42px */
+    background: #7b8e83; /* Your theme grey-green */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem; /* Bigger initials to match the bigger circle */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds depth */
+    border: 2px solid #ffffff; /* Makes it pop against the background */
+}
+
+.nav-link {
+    padding: 12px 25px;
+    color: var(--text-muted);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    color: var(--active-green);
+    background: #f1f5f9;
+}
+
+.nav-link.active {
+    background: var(--active-green) !important;
+    color: white !important;
+    margin: 0 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(77, 107, 83, 0.2);
+}
+
+.logout-section {
+    margin-top: auto;
+    padding: 0 15px;
+}
+
+.logout-link {
+    border-radius: 12px;
+}
+
+.logout-link:hover {
+    color: #ef4444;
+    background: #fef2f2;
+}
+
+
+
+.accent-text {
+    color: var(--accent-sage);
+}
+
+
+
+/* Stat Cards - Grid Layout Fix */
 .stat-card {
-    transition: transform 0.2s;
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    border-top: 5px solid transparent;
+    transition: transform 0.2s ease;
 }
 
 .stat-card:hover {
     transform: translateY(-5px);
+}
+
+.border-total { border-top-color: #f87171; }
+.border-registered { border-top-color: #fbbf24; }
+.border-upcoming { border-top-color: #60a5fa; }
+.border-pending { border-top-color: #34d399; }
+
+.stat-number { 
+    font-size: 2rem; 
+    font-weight: 800; 
+    color: var(--text-main);
+    display: block;
+}
+.row{
+    display: flex  !important;
+    flex-wrap: wrap !important;
+}
+
+.stat-label { 
+    font-size: 0.75rem; 
+    font-weight: 700; 
+    color: var(--text-muted); 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+}
+
+/* Table Design */
+.table-container {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    border: 1px solid var(--border-gray);
+    margin-top: 20px;
+}
+
+.table-header {
+    background: #fff;
+    border-bottom: 1px solid var(--border-gray);
+}
+
+.table thead th {
+    background-color: #f8fafc;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 16px 24px;
+    border: none;
+    font-weight: 700;
+}
+
+.table tbody td {
+    padding: 20px 24px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Status Badges */
+.badge-status {
+    background-color: #059669;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+    .sidebar { width: 80px; }
+    .sidebar-brand span, .nav-link span { display: none; }
+    .main-content { margin-left: 80px; padding: 25px; }
+    .nav-link { justify-content: center; padding: 15px 0; }
+    .nav-link.active { margin: 0 10px; }
+}
+/* volunteer page */
+ body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-mint);
+    color: #334139;
+}
+.application-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 500px;
+    border-top: 5px solid #6c8672;
+    margin: 80px auto;
+}
+        h1 { color: #6c8672; font-weight: bold; margin-bottom: 10px; }
+        .sub-text { color: #888; margin-bottom: 25px; font-size: 0.9rem; }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #d1dbd2; /* Soft Green */
+            border-radius: 8px;
+            background-color: #fdfdfd;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #6c8672;
+            box-shadow: 0 0 5px rgba(108, 134, 114, 0.2);
+        }
+        .application-card button {
+    width: 100%;
+    padding: 12px;
+    background-color: #6c8672;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+        
+        button:hover {
+            background-color: #5a705f;
+        }
+        .success-msg {
+            background: #d1dbd2;
+            color: #405d4b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+ /* Change day numbers */
+.fc .fc-daygrid-day-number{
+    color: #4b5a4b !important; /* dark green */
+    text-decoration: none !important;
+    font-weight: 600;
+}
+
+/* Change day headers (Sun Mon Tue) */
+.fc .fc-col-header-cell-cushion{
+    color: #4b5a4b !important;
+    text-decoration: none !important;
+    font-weight: 600;
+}
+
+/* Change today's highlight */
+.fc .fc-daygrid-day.fc-day-today{
+    background-color: #7a8d7a !important; /* green highlight */
+    border-radius: 6px;
+}
+.fc-prev-button .fc-icon,
+.fc-next-button .fc-icon {
+    font-size: 20px !important;
+}
+
+.fc-prev-button,
+.fc-next-button {
+    width: 40px !important;
+    height: 40px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fc-button-group .fc-button:empty {
+    display: none !important;
+}
+.fc .fc-button-group {
+    display: flex;
+    gap: 8px;
+}
+.fc-prev-button {
+    margin-right: 10px !important;
+}
+
+.fc-next-button {
+    margin-left: 10px !important;
+}
+/* Change event color */
+.fc-event{
+    background-color: #6c8672 !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 6px;
+}
+
+/* Remove blue link color */
+.fc a{
+    color: #4b5a4b !important;
+}
+
+/* Hover effect for dates */
+.fc .fc-daygrid-day-number:hover{
+    color: #6c8672 !important;
+}
+.sidebar-heading {
+    font-size: 22px !important;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-heading i {
+    font-size: 20px;
 }

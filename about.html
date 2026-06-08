@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - CampusEvents</title>
+    <title>About HMV - CampusEvents</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="about.css">
 </head>
 <body class="bg-light">
-    <header class="hero-small d-flex align-items-center justify-content-center text-center text-white">
-        <div class="container">
 
-            <h1 class="display-3 fw-bold">About Us</h1>
+    <header class="hero-hmv d-flex align-items-center justify-content-center text-center text-white">
+        <div class="container hero-content">
+            <h1 class="display-3 fw-bold mb-0">About Us</h1>
+            <p class="h5 mt-2">Celebrating Campus Life at Hans Raj Mahila Maha Vidyalaya, Jalandhar</p>
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb justify-content-center bg-transparent">
+                <ol class="breadcrumb justify-content-center bg-transparent mt-3">
                     <li class="breadcrumb-item"><a href="index.php" class="text-white text-decoration-none">Home</a></li>
                     <li class="breadcrumb-item active text-white-50" aria-current="page">About Us</li>
                 </ol>
@@ -22,69 +23,125 @@
         </div>
     </header>
 
-    <section class="container my-5 py-5">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6">
-                <h6 class="text-uppercase fw-bold text-primary mb-3" style="letter-spacing: 2px;">Our Mission</h6>
-                <h2 class="display-5 fw-bold mb-4">Promoting Academic Excellence and Student Participation.</h2>
-                <p class="text-muted lead">Our institution fosters academic excellence and encourages active student participation through structured campus events. With modern facilities and a supportive learning environment, we aim to create opportunities that enhance knowledge, skills, and collaboration among students.</p>
-                <p class="text-muted">We host a variety of cultural, technical, and sports events throughout the year, enriching the student experience and building lifelong connections.</p>
-                <div class="mt-4">
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fas fa-check-circle text-primary me-3 fa-lg"></i>
-                        <span class="fw-bold">Easy Event Registration</span>
-                    </div>
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fas fa-check-circle text-primary me-3 fa-lg"></i>
-                        <span class="fw-bold">Real-time Announcements</span>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-check-circle text-primary me-3 fa-lg"></i>
-                        <span class="fw-bold">Digital Certificate Management</span>
-                    </div>
-                </div>
+    <section class="container my-5 py-4">
+    <div class="row g-3 gallery-grid">
+
+        <div class="col-md-3">
+            <div class="gallery-item">
+                <img src="images/about/about_img (1).jpeg" class="img-fluid" alt="NCC Event">
             </div>
-            <div class="col-lg-6">
-                <div class="position-relative about-img">
-                    <img src="images/Aboutus_img7.png" class="img-fluid rounded-4 shadow-lg about-img" alt="Campus Life">
+        </div>
+
+        <div class="col-md-3">
+            <div class="gallery-item">
+                <img src="images/about/about_img (2).jpeg" class="img-fluid" alt="Holi Event">
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="gallery-item">
+                <img src="images/about/about_img (3).jpeg" class="img-fluid" alt="HMV Life">
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="gallery-item">
+                <img src="images/about/about_img (4).jpeg" class="img-fluid" alt="Seminar">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <section class="container my-5">
+        <div class="row align-items-start g-5">
+            <div class="col-lg-7">
+                <h1 class="fw-bold mb-4">About HMV</h1>
+                <p class="text-dark lead"><b><h6>Hans Raj Mahila Maha Vidyalaya, Jalandhar is a premier institution of North India providing value-based, employment-oriented quality education to women.</b></h6></p>
+                <p class="text-muted"><h6>Founded in 1927 in Lahore by Mahatma Hans Raj Ji, a dedicated reformer and staunch advocate of the DAV Movement, Hans Raj Mahila Maha Vidyalaya stands tall as a beacon of women’s education and empowerment in North India. After Partition in 1948, the institution was relocated to Jalandhar, where it continued its noble mission of educating and empowering women. A landmark in its journey was the inauguration of its core block in 1959 by Dr. Sarvepalli Radhakrishnan, then Vice President of India, a testimony to its growing stature in the field of education.</h6></p>
+                <p class="text-muted"><h6>Today, under the visionary leadership of Padma Shri Awardee Dr. Punam Suri, President, DAV College Managing Committee, New Delhi, HMV has evolved into a premier institution dedicated to value-based, employment-oriented education. The college proudly holds an ‘A++’ grade with a score of 3.65 in the third cycle of NAAC Reaccreditation, a distinction that reflects its commitment to academic excellence. Recognised by the University Grants Commission (UGC) as a "College of Excellence," HMV serves over 5,000 students, providing them with a holistic learning experience beyond conventional academics.</h6></p>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="search-stats-container d-flex flex-column align-items-center">
+                    <div class="search-bar-wrapper mb-4 w-100 p-3 shadow-sm bg-white rounded-3">
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent border-0"><i class="fas fa-search text-muted"></i></span>
+                            <input type="text" id="eventSearchInput" class="form-control border-0 px-0" placeholder="Search Events..." aria-label="Search Events">
+                            <button class="btn btn-navy ms-2 px-4 rounded-pill" type="button" id="searchBtn">Search</button>
+                        </div>
+                    </div>
+
+                    <div class="row w-100 g-3">
+                        <div class="col-md-4">
+                            <div class="stat-card p-3 text-center bg-white shadow-sm rounded-3">
+                                <i class="fas fa-users-viewfinder fa-2x mb-2 text-green"></i>
+                                <div class="stat-number fw-bold">5000+</div>
+                                <div class="stat-label text-uppercase small text-muted">Students</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-card p-3 text-center bg-white shadow-sm rounded-3">
+                                <i class="fas fa-calendar-check fa-2x mb-2 text-green"></i>
+                                <div class="stat-number fw-bold">80+</div>
+                                <div class="stat-label text-uppercase small text-muted">Events/Year</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-card p-3 text-center bg-white shadow-sm rounded-3">
+                                <i class="fas fa-handshake fa-2x mb-2 text-green"></i>
+                                <div class="stat-number fw-bold">25+</div>
+                                <div class="stat-label text-uppercase small text-muted">Clubs & Societies</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-navy py-5 text-white">
-        <div class="container py-5">
-            <div class="row text-center mb-5">
-                <div class="col-lg-8 mx-auto">
-                    <h2 class="fw-bold display-6">Our Event Management System</h2>
-                    <p class="text-white-50">Powered by Students. Driven by Campus life.</p>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-    <div class="card bg-transparent border-light h-100 p-4 text-center text-white">
-        <i class="fas fa-calendar-alt fa-3x mb-3"></i> 
-        <h5 class="fw-bold">Centralized Calendar</h5>
-        <p class="small opacity-75">Stay updated with all upcoming events through our integrated campus calendar.</p>
-    </div>
-</div>
-                <div class="col-md-4">
-                    <div class="card bg-transparent border-secondary h-100 p-4 text-center text-white">
-                        <i class="fas fa-users fa-3x mb-3"></i>
-                        <h5 class="fw-bold">Student Community</h5>
-                        <p class="small opacity-75">Join clubs and interact with peers who share your interests and passions.</p>
+    <section class="vision-marquee-section py-5 my-5">
+        <div class="container-fluid marquee-container">
+            <h2 class="text-center fw-bold mb-5 navy-text">Our Core Values</h2>
+            
+            <div class="marquee-content">
+                <div class="marquee-item">
+                    <div class="value-card shadow-lg p-4 bg-white rounded-4 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-eye fa-2x text-green me-3"></i>
+                            <h4 class="fw-bold mb-0">Vision</h4>
+                        </div>
+                        <p class="text-muted mb-0">Women Education Focusing on Holistic Development and Empowerment.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card bg-transparent border-secondary h-100 p-4 text-center text-white">
-                        <i class="fas fa-shield-alt fa-3x mb-3"></i>
-                        <h5 class="fw-bold">Secure Participation</h5>
-                        <p class="small opacity-75">Safe and verified registration process for all official college activities.</p>
+                <div class="marquee-item">
+                    <div class="value-card shadow-lg p-4 bg-white rounded-4 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-flag fa-2x text-green me-3"></i>
+                            <h4 class="fw-bold mb-0">Mission</h4>
+                        </div>
+                        <p class="text-muted mb-0">Value Oriented, Skill Based and Globally Competent Education in sync with Nation’s March towards Sustainable Growth and Prosperity.</p>
                     </div>
                 </div>
+                <div class="marquee-item">
+                    <div class="value-card shadow-lg p-4 bg-white rounded-4 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-lightbulb fa-2x text-green me-3"></i>
+                            <h4 class="fw-bold mb-0">Belief</h4>
+                        </div>
+                        <p class="text-muted mb-0">To impart the kind of education that enables women to become responsible, self-sufficient, independent and empathetic global citizens, who can bring a positive change and make a sustainable contribution to this universe.</p>
+                    </div>
+                </div>
+
+                <div class="marquee-item"><div class="value-card shadow-lg p-4 bg-white rounded-4 h-100"><div class="d-flex align-items-center mb-3"><i class="fas fa-eye fa-2x text-green me-3"></i><h4 class="fw-bold mb-0">Vision</h4></div><p class="text-muted mb-0">Women Education Focusing on Holistic Development and Empowerment.</p></div></div>
+                 <div class="marquee-item"><div class="value-card shadow-lg p-4 bg-white rounded-4 h-100"><div class="d-flex align-items-center mb-3"><i class="fas fa-flag fa-2x text-green me-3"></i><h4 class="fw-bold mb-0">Mission</h4></div><p class="text-muted mb-0">Value Oriented, Skill Based and Globally Competent Education in sync with Nation’s March towards Sustainable Growth and Prosperity.</p></div></div>
+                 <div class="marquee-item"><div class="value-card shadow-lg p-4 bg-white rounded-4 h-100"><div class="d-flex align-items-center mb-3"><i class="fas fa-lightbulb fa-2x text-green me-3"></i><h4 class="fw-bold mb-0">Belief</h4></div><p class="text-muted mb-0">To impart the kind of education that enables women to become responsible, self-sufficient, independent and empathetic global citizens, who can bring a positive change and make a sustainable contribution to this universe.</p></div></div>
+                
             </div>
         </div>
     </section>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="about.js"></script>
 </body>
 </html>

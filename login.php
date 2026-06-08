@@ -1,4 +1,7 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 session_start(); 
 include 'db.php'; 
 
@@ -14,14 +17,63 @@ if (isset($_POST['login_btn'])) {
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         
-        if (password_verify($password, $row['password'])) {
+        if (password_verify($password, $row['password']) || $password === $row['password']) {
 
-        $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_id'] = $row['id'];
             $_SESSION['role'] = $row['role'];
             $_SESSION['fullname'] = $row['fullname'];
 
-            header("Location: dashboard.php");
-            exit();
+            // --- START WELCOME EMAIL LOGIC ---
+            if ($row['first_login'] == 1) {
+
+                require 'PHPMailer/src/Exception.php';
+                require 'PHPMailer/src/PHPMailer.php';
+                require 'PHPMailer/src/SMTP.php';
+
+                $mail = new PHPMailer(true);
+
+                try {
+                    $mail->isSMTP();
+                    $mail->Host       = 'smtp.gmail.com';
+                    $mail->SMTPAuth   = true;
+                    $mail->Username   = 'chopraarman13@gmail.com'; 
+                    $mail->Password   = 'qpoapygpjlykecxh'; 
+                    $mail->SMTPSecure = 'tls';
+                    $mail->Port       = 587;
+
+                    $mail->setFrom('chopraarman13@gmail.com', 'College Events Team');
+                    $mail->addAddress($row['email'], $row['fullname']); 
+
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Welcome to Smart Event Management!';
+                    $mail->Body    = "
+                        <h3>Welcome, {$row['fullname']}!</h3>
+                        <p>Your account is now active.</p>
+                        <p>You can now explore events on your dashboard.</p>
+                    ";
+
+                    // DEBUG (remove later)
+                    $mail->SMTPDebug = 2;
+                    $mail->Debugoutput = 'html';
+
+                    if($mail->send()) {
+                        $uid = $row['id'];
+                        mysqli_query($conn, "UPDATE users SET first_login = 0 WHERE id = '$uid'");
+                    }
+
+                } catch (Exception $e) {
+                    echo "Mailer Error: " . $mail->ErrorInfo;
+                }
+            }
+            // --- END WELCOME EMAIL LOGIC ---
+
+            if($row['role'] == 'admin'){
+    header("Location: admin_dashboard.php");
+} else {
+    header("Location: student_dashboard.php");
+}
+exit();
+
         } else {
             $error = "Invalid password. Please try again.";
         }

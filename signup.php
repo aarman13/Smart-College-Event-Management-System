@@ -1,8 +1,17 @@
 <?php
 mysqli_report(MYSQLI_REPORT_OFF);
-include 'db.php'; 
+include 'db.php';
+session_start();
 
-$message = ""; 
+// PHPMailer
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
+$message = "";
 $message_type = "";
 
 if (isset($_POST['signup_btn'])) {
@@ -12,18 +21,72 @@ if (isset($_POST['signup_btn'])) {
     $student_id = mysqli_real_escape_string($conn, $_POST['student_id']);
     $password = $_POST['password'];
 
-
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-    $query = "INSERT INTO users (fullname, email, password, student_id) VALUES ('$fullname', '$email', '$hashed_password', '$student_id')";
+    $query = "INSERT INTO users (fullname, email, password, student_id)
+              VALUES ('$fullname', '$email', '$hashed_password', '$student_id')";
 
     if (mysqli_query($conn, $query)) {
-    $message = "Account created successfully! You can now proceed to login.";
-    $message_type = "success"; 
-} else {
-    $message = "Error: " . mysqli_error($conn);
-    $message_type = "error";
-}
+
+        // SEND EMAIL
+        $mail = new PHPMailer(true);
+
+        try {
+
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+
+            // YOUR EMAIL
+            $mail->Username = 'chopraarman13@gmail.com';
+            $mail->Password = 'fqlp ctxg yafk fegb';
+
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+
+            $mail->setFrom(
+                'chopraarman13@gmail.com',
+                'College Event System'
+            );
+
+            // STUDENT EMAIL
+            $mail->addAddress($email);
+
+            $mail->isHTML(true);
+
+            $mail->Subject = 'Welcome to College Event Management System';
+
+            $mail->Body = "
+            <h2>Welcome $fullname 🎉</h2>
+
+            <p>Your account has been created successfully.</p>
+
+            <p><b>Student ID:</b> $student_id</p>
+
+            <p>Thank you for joining College Event Management System.</p>
+            ";
+
+            $mail->send();
+
+        } catch (Exception $e) {
+            // ignore mail error
+        }
+
+        $_SESSION['fullname'] = $fullname;
+        $_SESSION['role'] = 'student';
+
+        echo "<script>
+        alert('Signup successful 🎉 Welcome to College Event System');
+        window.location='student_dashboard.php';
+        </script>";
+
+        exit();
+
+    } else {
+
+        $message = "Error: " . mysqli_error($conn);
+        $message_type = "error";
+    }
 }
 ?>
 
@@ -90,7 +153,7 @@ if (isset($_POST['signup_btn'])) {
         </form>
 
         <div class="links mt-4">
-            Already have an account? <a href="login.html" class="fw-bold">Sign In</a>
+            Already have an account? <a href="login.php" class="fw-bold">Sign In</a>
         </div>
         
         <a href="index.php" class="back-home mt-3">← Back to Home</a>
